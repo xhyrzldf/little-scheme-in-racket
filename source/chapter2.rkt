@@ -33,3 +33,5 @@
 
 ;; 测试
 (member? 'meat '(mashed potatoes and meat gravy)) ;; Expect #t
+(member? 'meat '(mashed potatoes and apple gravy)) ;; Expect #f
+
