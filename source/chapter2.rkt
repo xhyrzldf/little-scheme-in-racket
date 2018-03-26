@@ -15,7 +15,7 @@
 (lat? '(a c d f)) ;; Expect #t
 (lat? '(jack rose (yoda luke))) ;;Expect #f
 
-;;十戒 1.在表述任意函数时，总是将询问null?作为诸问题之首
+;;十戒 1.在表述任意函数时，总是将询问null?作为诸问题之首(递归的终止条件)
 
 ;; member函数定义 用于判断一个列表是否包含某一个原子
 (define (member? a lat) 
@@ -23,6 +23,13 @@
         ((null? lat) #f) ;;如果lat是空列表 直接返回 #f
         ((eq? a (car lat)) #t) ;; 查看lat的第一个元素是否等于 a
         (else (member? a (cdr lat))))) ;; 判断剩下的元素是否包含 a
+
+;; 书中的写法,使用or
+(define (member? a lat)
+    (cond 
+        ((null? lat) #f)
+        (else (or (eq? a (car lat))
+                  (member? a (cdr lat))))))
 
 ;; 测试
 (member? 'meat '(mashed potatoes and meat gravy)) ;; Expect #t
