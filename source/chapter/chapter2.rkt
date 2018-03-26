@@ -4,7 +4,7 @@
 (define (atom? x)
     (and (not (pair? x)) (not (null? x))))
 
-;; lat 函数定义 用于判断一个列表里的所有元素是否都为原子atom
+;; lat? 函数定义 用于判断一个列表里的所有元素是否都为原子atom
 (define (lat? l)
     (cond ;;cond 如果predicate为false 询问下个问题
         ((null? l) #t)  ;;1.询问 参数l是否为空列表
@@ -17,7 +17,7 @@
 
 ;;十戒 1.在表述任意函数时，总是将询问null?作为诸问题之首(递归的终止条件)
 
-;; member函数定义 用于判断一个列表是否包含某一个原子
+;; member? 函数定义 用于判断一个列表是否包含某一个原子
 (define (member? a lat) 
     (cond 
         ((null? lat) #f) ;;如果lat是空列表 直接返回 #f
