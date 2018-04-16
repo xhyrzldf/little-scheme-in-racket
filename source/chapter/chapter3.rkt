@@ -23,3 +23,11 @@
             (else (cons (car lat) 
                         (rember a (cdr lat))))))))
 
+;; 第三版优化询问语句函数
+
+(define (rember a lat)
+    (cond 
+        ((null? lat) (quote ()))
+        ((eq? a (car lat)) (cdr lat)
+        (else (cons (car lat) 
+                    (rember a (cdr lat)))))))
