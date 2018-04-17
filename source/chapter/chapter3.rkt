@@ -44,7 +44,7 @@
 ;; 测试
 (define lat '((a c) (b e) (f g) (vac kkk)))
 (first lat)
-;; > '(a b f vac)
+;; >> '(a b f vac)
 
 ;; scheme十诫之第二诫 - 使用 cons 来构建列表
 ;; scheme 十诫之第三诫 - 构建一个列表的时候,描述第一个典型元素,之后 cons 该元素到一般性递归(natural recursion)上。 
