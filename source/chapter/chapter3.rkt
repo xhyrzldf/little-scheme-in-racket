@@ -31,3 +31,20 @@
         ((eq? a (car lat)) (cdr lat))
         (else (cons (car lat) 
                     (rember a (cdr lat))))))
+
+;; 3.4 first函数:first函数以一个列表l为参数,该列表要么为空列表,要么只包含非空列表.该函数构建出
+;; 一个新列表,新列表中的元素由列表l中每个内部列表的第一个S-表达式组成。
+
+(define (first lat)
+    (cond 
+        ((null? lat) (quote ()))
+        (else (cons (car (car lat)) 
+                    (first (cdr lat))))))
+
+;; 测试
+(define lat '((a c) (b e) (f g) (vac kkk)))
+(first lat)
+;; > '(a b f vac)
+
+;; scheme十诫之第二诫 - 使用 cons 来构建列表
+;; scheme 十诫之第三诫 - 构建一个列表的时候,描述第一个典型元素,之后 cons 该元素到一般性递归(natural recursion)上。 
