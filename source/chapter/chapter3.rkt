@@ -46,5 +46,22 @@
 (first lat)
 ;; >> '(a b f vac)
 
+;; 3.5 (insertR new old lat)函数,该函数拥有三个参数,原子new与old以及一个列表lat。
+;; insertR函数在lat的第一个old后面插入new,并返回一个新列表。
+
+;; 思路 1.如果lat为空则返回'()
+;;     2.如果lat的car是old,将(car lat) new (cdr lat) 连接到一起
+;;     3.如果lat的car不是old,则对(cdr lat)调用inserR 并将(car lat)与(inserR (cdr lat)) cons到一起
+
+(define (insertR new old lat)
+    (cond 
+        ((null? lat) (quote ()))
+        ((eq? (car lat) old) (cons (car lat)
+                                    (cons new 
+                                        (cdr lat))))
+        (else (cons (car lat)
+                    (insertR new old (cdr lat))))))
+
+
 ;; scheme十诫之第二诫 - 使用 cons 来构建列表
 ;; scheme 十诫之第三诫 - 构建一个列表的时候,描述第一个典型元素,之后 cons 该元素到一般性递归(natural recursion)上。 
